@@ -6,6 +6,7 @@
 #define KUIPER_INFER_INCLUDE_COMMON_HPP_
 namespace kuiper_infer {
 
+// 节点需要的参数的类型，对应类RuntimeParameter
 enum class RuntimeParameterType {
   kParameterUnknown = 0,
   kParameterBool = 1,
@@ -57,7 +58,6 @@ enum class ParseParameterAttrStatus {
   kParameterMissingDilation = 16,
   kParameterMissingPaddingMode = 16,
 
-
   kAttrMissingBias = 21,
   kAttrMissingWeight = 22,
   kAttrMissingRunningMean = 23,
@@ -69,5 +69,5 @@ enum class ParseParameterAttrStatus {
 
   kParameterAttrParseSuccess = 0
 };
-}
-#endif //KUIPER_INFER_INCLUDE_COMMON_HPP_
+}  // namespace kuiper_infer
+#endif  // KUIPER_INFER_INCLUDE_COMMON_HPP_
