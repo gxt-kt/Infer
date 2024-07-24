@@ -9,6 +9,7 @@ set(link_math_lib ${ARMADILLO_LIBRARIES} ${BLAS_LIBRARIES} ${LAPACK_LIBRARIES})
 set(TEST_SRC 
   test_main.cpp
   test_tensor.cpp
+  test_load_data.cpp
 )
 add_executable(test_infer ${TEST_SRC})
 
