@@ -10,6 +10,7 @@ set(TEST_SRC
   test_main.cpp
   test_tensor.cpp
   test_load_data.cpp
+  test_relu.cpp
 )
 add_executable(test_infer ${TEST_SRC})
 
@@ -22,3 +23,5 @@ target_link_libraries(test_infer ${link_lib} ${link_math_lib})
 target_include_directories(test_infer PUBLIC ${glog_INCLUDE_DIR})
 target_include_directories(test_infer PUBLIC ${GTest_INCLUDE_DIR})
 target_include_directories(test_infer PUBLIC ${Armadillo_INCLUDE_DIR})
+
+target_include_directories(test_infer PUBLIC ../source)
