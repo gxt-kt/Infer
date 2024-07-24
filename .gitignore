@@ -1,1 +1,7 @@
 /build
+/lib
+/bin
+/log
+/.cache
+/.vscode
+/.idea
