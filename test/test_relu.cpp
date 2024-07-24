@@ -8,7 +8,7 @@
 #include "layer/details/relu.hpp"
 
 // 有了注册机制后的框架是如何init layer
-TEST(test_layer, forward_relu2) {
+TEST(test_layer, forward_relu) {
   using namespace kuiper_infer;
   float thresh = 0.f;
   std::shared_ptr<RuntimeOperator> tmp = std::make_shared<RuntimeOperator>();

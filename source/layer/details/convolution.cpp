@@ -11,6 +11,7 @@
 #include "tick.hpp"
 
 namespace kuiper_infer {
+// 卷积层
 ConvolutionLayer::ConvolutionLayer(uint32_t output_channel, uint32_t in_channel,
                                    uint32_t kernel_h, uint32_t kernel_w,
                                    uint32_t padding_h, uint32_t padding_w,
@@ -26,7 +27,9 @@ ConvolutionLayer::ConvolutionLayer(uint32_t output_channel, uint32_t in_channel,
   if (groups != 1) {
     in_channel /= groups;
   }
+  // 初始化权重矩阵（分配内存）
   this->InitWeightParam(output_channel, in_channel, kernel_h, kernel_w);
+  // 如果还有偏移
   if (use_bias_) {
     this->InitBiasParam(output_channel, 1, 1, 1);
   }
@@ -330,12 +333,15 @@ ParseParameterAttrStatus ConvolutionLayer::GetInstance(
     return ParseParameterAttrStatus::kParameterMissingKernel;
   }
 
+  // 实际构造这个层，并初始化需要设置的维度等配置参数（非实际模型参数）
+
   // kernel的方向是倒置的
   conv_layer = std::make_shared<ConvolutionLayer>(
       out_channel->value, in_channel->value, kernels.at(0), kernels.at(1),
       paddings.at(0), paddings.at(1), strides.at(0), strides.at(1),
       groups->value, use_bias->value);
 
+  // 加在实际模型参数
   // load weights
   const std::map<std::string, std::shared_ptr<RuntimeAttribute>>& attrs =
       op->attribute;
@@ -352,6 +358,7 @@ ParseParameterAttrStatus ConvolutionLayer::GetInstance(
     }
 
     const std::vector<float>& bias_values = bias->get<float>();
+    // 设置实际模型参数
     conv_layer->set_bias(bias_values);
   }
 
@@ -367,6 +374,7 @@ ParseParameterAttrStatus ConvolutionLayer::GetInstance(
     return ParseParameterAttrStatus::kAttrMissingWeight;
   }
 
+  // 设置实际模型参数
   const std::vector<float>& weight_values = weight->get<float>();
   conv_layer->set_weights(weight_values);
   return ParseParameterAttrStatus::kParameterAttrParseSuccess;

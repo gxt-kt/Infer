@@ -15,5 +15,4 @@ enum class RuntimeDataType {
   kTypeInt8 = 7,
   kTypeUInt8 = 8,
 };
-#endif //KUIPER_INFER_INCLUDE_RUNTIME_RUNTIME_DATATYPE_HPP_
-
+#endif  // KUIPER_INFER_INCLUDE_RUNTIME_RUNTIME_DATATYPE_HPP_

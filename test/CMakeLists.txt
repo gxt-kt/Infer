@@ -11,6 +11,7 @@ set(TEST_SRC
   test_tensor.cpp
   test_load_data.cpp
   test_relu.cpp
+  test_graph.cpp
 )
 add_executable(test_infer ${TEST_SRC})
 

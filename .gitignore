@@ -5,3 +5,6 @@
 /.cache
 /.vscode
 /.idea
+/cmake-build*
+/html
+Doxygen.config
